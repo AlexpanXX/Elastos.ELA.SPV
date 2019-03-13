@@ -178,6 +178,18 @@ func (s *spvservice) HeaderStore() database.Headers {
 	return s.headers
 }
 
+func (s *spvservice) IsCurrent() bool {
+	return s.IService.IsCurrent()
+}
+
+func (s *spvservice) GetHeight() uint32 {
+	best, err := s.headers.GetBest()
+	if err != nil {
+		return 0
+	}
+	return best.Height
+}
+
 func (s *spvservice) GetFilter() *msg.TxFilterLoad {
 	addrs := s.db.Addrs().GetAll()
 	f := bloom.NewFilter(uint32(len(addrs)), math.MaxUint32, 0)

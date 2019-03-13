@@ -57,6 +57,13 @@ type SPVService interface {
 	// Get headers database
 	HeaderStore() database.Headers
 
+	// IsCurrent returns if the SPV service synced to best height with the main
+	// blockchain.
+	IsCurrent() bool
+
+	// GetHeight returns the current main chain height.
+	GetHeight() uint32
+
 	// Start the SPV service
 	Start()
 

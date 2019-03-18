@@ -22,10 +22,6 @@ import (
 	"github.com/elastos/Elastos.ELA/utils/http/jsonrpc"
 )
 
-const (
-	MaxPeers = 12
-)
-
 var ErrInvalidParameter = fmt.Errorf("invalide parameter")
 
 type spvwallet struct {
